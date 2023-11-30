@@ -19,6 +19,8 @@ data class Drug(
     private val type: String,
     @ColumnInfo(name = "description")
     private val description: String,
+    @ColumnInfo(name = "packaging")
+    private val packaging: String,
     @ColumnInfo(name = "price")
     private val price: String
 ) {
@@ -39,6 +41,9 @@ data class Drug(
     }
     fun getDescription(): String {
         return description
+    }
+    fun getPackaging(): String {
+        return packaging
     }
     fun getPrice(): String {
         return price

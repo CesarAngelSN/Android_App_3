@@ -28,42 +28,56 @@ fun NewDrugActivity(navController: NavController, appDatabase: AppDatabase) {
         initialDisplayMode = DisplayMode.Input
     )
     Column (Modifier.fillMaxSize(), Arrangement.Top, Alignment.CenterHorizontally){
-        var openDialog by remember {
-            mutableStateOf(false)
-        }
-        Button(onClick = {
-            openDialog = !openDialog
-        }) {
-            Text(text = "Mostrar diálogo de Date Picker")
-        }
-        if (openDialog) {
-            DatePickerDialog(
-                onDismissRequest = {
-                    openDialog = false
-                },
-                confirmButton = {
-                    TextButton(
-                        onClick = {
-                            openDialog = false
-                        }
-                    ) {
-                        Text("OK")
+
+    }
+}
+
+@Composable
+fun NewDropDownMenu(list: List<String>) {
+
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun NewDatePickerDialog() {
+    val state = rememberDatePickerState(
+        initialDisplayMode = DisplayMode.Input
+    )
+    var openDialog by remember {
+        mutableStateOf(false)
+    }
+    Button(onClick = {
+        openDialog = !openDialog
+    }) {
+        Text(text = "Mostrar diálogo de Date Picker")
+    }
+    if (openDialog) {
+        DatePickerDialog(
+            onDismissRequest = {
+                openDialog = false
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        openDialog = false
                     }
-                },
-                dismissButton = {
-                    TextButton(
-                        onClick = {
-                            openDialog = false
-                        }
-                    ) {
-                        Text("CANCEL")
-                    }
+                ) {
+                    Text("OK")
                 }
-            ) {
-                DatePicker(
-                    state = state
-                )
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        openDialog = false
+                    }
+                ) {
+                    Text("CANCEL")
+                }
             }
+        ) {
+            DatePicker(
+                state = state
+            )
         }
     }
 }
