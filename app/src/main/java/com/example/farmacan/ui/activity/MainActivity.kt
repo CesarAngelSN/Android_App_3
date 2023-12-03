@@ -254,9 +254,11 @@ fun MainActivity(navController: NavController, appDatabase: AppDatabase) {
                 isDelete = true,
                 checkedList,
                 {newListOfDrugs ->
-                    listOfDrugs = newListOfDrugs},
+                    listOfDrugs.clear()
+                    listOfDrugs.addAll(newListOfDrugs)},
                 {newCheckedList ->
-                    checkedList = newCheckedList},
+                    newCheckedList.clear()
+                    checkedList.addAll(newCheckedList)},
                 appDatabase,
                 {pressed ->
                     showCheckBox = pressed},
@@ -379,7 +381,7 @@ fun AnimatedButton(
     translatable: Boolean,
     isDelete: Boolean,
     checkedList: MutableList<Boolean>,
-    updateDrugList: (ArrayList<Drug>) -> Unit,
+    updateDrugList: (MutableList<Drug>) -> Unit,
     updateCheckedList: (MutableList<Boolean>) -> Unit,
     appDatabase: AppDatabase,
     onPressed: (Boolean) -> Unit,
@@ -408,15 +410,13 @@ fun AnimatedButton(
             onDismissRequest = {active = false},
             confirmButton = {
                 TextButton(onClick = {
-                    appDatabase.getDrugDao().getAll().forEach { print(it.getName() + ", ") }
-                    println(checkedList)
                     checkedList.forEach {
                         if (it) {
                             appDatabase.getDrugDao().deleteById(
                                 appDatabase.getDrugDao().getAll()[checkedList.indexOf(it)].getId())
                         }
                     }
-                    updateDrugList(appDatabase.getDrugDao().getAll() as ArrayList<Drug>)
+                    updateDrugList(appDatabase.getDrugDao().getAll() as MutableList<Drug>)
                     updateCheckedList(mutableListOf(false).apply {
                         for (i in 0 until appDatabase.getDrugDao().getAll().size - 1) {
                             add(false)
@@ -445,9 +445,6 @@ fun AnimatedButton(
             }
             else if (clickCounter > 1 && !hasClickedItems(checkedList)) {
                 clickCounter = 0
-            }
-            else if (clickCounter == 0) {
-                println("Entra")
             }
             onPressed(clickCounter == 1)
         }

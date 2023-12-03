@@ -92,7 +92,9 @@ fun DrugInfo(appDatabase: AppDatabase, applicationContext: Context, drugId: Stri
                 NewBox(boldText = "Name: ", text = drug.getName())
                 NewBox(boldText = "Type: ", text = drug.getType())
                 NewBox(boldText = "Box: ", text = drug.getPackaging())
-                NewBox(boldText = "Price: ", text = drug.getPrice())
+                NewBox(boldText = "Price: ", text = drug.getPrice().ifEmpty {
+                    "Free"
+                })
                 NewBox(boldText = "Description: ", text = drug.getDescription())
             }
         }
