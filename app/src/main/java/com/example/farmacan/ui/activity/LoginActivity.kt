@@ -87,7 +87,7 @@ fun LoginActivity(navController: NavController, appDatabase: AppDatabase, applic
                     val userFound = Toast.makeText(applicationContext,
                         "Login for $user successfully done", Toast.LENGTH_SHORT)
                     userFound.show()
-                    navController.navigate("mainactivity/$user") {
+                    navController.navigate("mainactivity") {
                         popUpTo("loginactivity") {
                             inclusive = true
                         }

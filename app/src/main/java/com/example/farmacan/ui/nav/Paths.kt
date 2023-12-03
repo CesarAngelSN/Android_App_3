@@ -7,4 +7,5 @@ sealed class Paths(val path: String) {
     object RegisterActivity : Paths("registeractivity")
     object MainActivity : Paths("mainactivity")
     object NewDrugActivity : Paths("newdrugactivity")
+    object DrugInfo : Paths("druginfo")
 }

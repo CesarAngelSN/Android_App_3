@@ -113,7 +113,7 @@ fun RegisterActivity(navController: NavController, appDatabase: AppDatabase, app
                     appDatabase.getUserDao().insert(newUser)
                     println(appDatabase.getUserDao().getAll())
                     rightUser.show()
-                    navController.navigate("mainactivity/$user") {
+                    navController.navigate("mainactivity") {
                         popUpTo("registeractivity") {
                             inclusive = true
                         }

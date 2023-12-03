@@ -11,4 +11,7 @@
     <color name="lightgrey">#FFDEE3EB</color>
     <color name="darkgreen">#FF268232</color>
     <color name="lightgreen">#FF8EC925</color>
+    <color name="bluedrug">#FF92A8B6</color>
+    <color name="greendrug">#FFBFCFA8</color>
+    <color name="graydrug">#FF9D9184</color>
 </resources>

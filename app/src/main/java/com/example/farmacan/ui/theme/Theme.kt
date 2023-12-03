@@ -47,7 +47,11 @@ private val OwnColorScheme = darkColorScheme(
     onSecondary = Color.White,
     tertiary = LightGreen,
     error = Red,
-    background = Carne
+    background = Carne , // esto es un poco racista
+    onBackground = DarkGreen,
+    surface = Color.DarkGray,
+    onSurface = LighterGreen,
+    surfaceVariant = DarkGreen
 )
 
 @Composable

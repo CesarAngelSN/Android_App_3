@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.farmacan.data.db.AppDatabase
 import com.example.farmacan.ui.activity.AuthenticationActivity
+import com.example.farmacan.ui.activity.DrugInfo
 import com.example.farmacan.ui.activity.FirstActivity
 import com.example.farmacan.ui.activity.LoginActivity
 import com.example.farmacan.ui.activity.MainActivity
@@ -29,12 +30,15 @@ fun NavigationGraph(appDatabase: AppDatabase, applicationContext: Context) {
         composable(Paths.RegisterActivity.path) {
             RegisterActivity(navController, appDatabase, applicationContext)
         }
-        composable(Paths.MainActivity.path + "/{userName}") {
-            val userName = it.arguments?.getString("userName")
-            MainActivity(navController, appDatabase, userName)
+        composable(Paths.MainActivity.path) {
+            MainActivity(navController, appDatabase)
         }
         composable(Paths.NewDrugActivity.path) {
-            NewDrugActivity(navController, appDatabase)
+            NewDrugActivity(navController, appDatabase, applicationContext)
+        }
+        composable(Paths.DrugInfo.path + "/{id}") {
+            val drugId = it.arguments?.getString("id")
+            DrugInfo(appDatabase, applicationContext, drugId)
         }
     }
 }

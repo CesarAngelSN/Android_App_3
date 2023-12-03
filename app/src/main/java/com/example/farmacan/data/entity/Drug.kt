@@ -11,10 +11,6 @@ data class Drug(
     private val id: Int,
     @ColumnInfo(name = "name")
     private val name: String,
-    @ColumnInfo(name = "genericName")
-    private val genericName: String,
-    @ColumnInfo(name = "brand")
-    private val brand: String,
     @ColumnInfo(name = "type")
     private val type: String,
     @ColumnInfo(name = "description")
@@ -29,12 +25,6 @@ data class Drug(
     }
     fun getName(): String {
         return name
-    }
-    fun getGenericName(): String {
-        return genericName
-    }
-    fun getBrand(): String {
-        return brand
     }
     fun getType(): String {
         return type
