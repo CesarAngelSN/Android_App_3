@@ -386,7 +386,6 @@ fun NewDatePickerDialog(onDatePicker: (String) -> Unit) {
                         val selectedDate = state.selectedDateMillis
                         val formattedDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate)
                         onDatePicker(formattedDate)
-                        println(formattedDate)
                         openDialog = false
                     }
                 ) {
