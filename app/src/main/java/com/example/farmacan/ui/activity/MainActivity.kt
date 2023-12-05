@@ -75,12 +75,12 @@ import com.example.farmacan.data.entity.Drug
 fun MainActivity(navController: NavController, appDatabase: AppDatabase) {
     var listOfDrugs = remember {
         val drugsFromDatabase = appDatabase.getDrugDao().getAll()
-        mutableListOf<Drug>().apply {
+        mutableStateListOf<Drug>().apply {
             addAll(drugsFromDatabase)
         }
     }
     var checkedList = remember {
-        mutableListOf(false).apply {
+        mutableStateListOf(false).apply {
             for (i in 0 until listOfDrugs.size - 1) {
                 add(false)
             }
